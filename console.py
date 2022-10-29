@@ -32,3 +32,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             uid = args
             attr_or_dict = False
+            
+        attr_and_value = ""
+        if method == "update" and attr_or_dict:
