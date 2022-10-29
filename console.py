@@ -133,12 +133,15 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances"""
         if line != "":
             words = line.split(' ')
-            if words [0] not in storage.classes():
+            if words[0] not in storage.classes():
                 print("** class doesn't exist **")
             else:
                 l = [str(obj) for key, obj in storage.all().items()
                     if type(obj).__name__ == words[0]]
                 print(l)
+        else:
+            l = [str(obj) for key, obj in storage.all().items()]
+            print(l)
 
     def do_count(self, line):
         """Counts the instances of a class"""
@@ -198,6 +201,5 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[key], attribute, value)
                 storage.all()[key].save()
 
-
-    if __name__ == '__main__'
+    if __name__ == '__main__':
         HBNBCommand().cmdloop()
