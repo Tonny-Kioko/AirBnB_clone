@@ -10,7 +10,7 @@ class FileStorage:
 
     """Class for serialization and deserialization of base classes"""
     __file_path = "file.json"
-    __object = {}
+    __objects = {}
 
     def all(self):
         """Returns __object dictionary"""
@@ -25,7 +25,7 @@ class FileStorage:
         """Serializes __objects to JSON file"""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
-            json.dump(d, f)
+            json.dumps(d, f)
 
     def classes(self):
         """Returns a dictionary of valid classes and their references"""
