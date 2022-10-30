@@ -2,16 +2,27 @@
 """Module for the entry point of the command interpreter"""
 
 import cmd
-from models.base_model import BaseModel
-from models import storage
 import re
 import json
+import sys
+import os
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     """Class for the command interpreter"""
 
-    prompt = "(hbnb)"
+    prompt = '(hbnb)'
+    classes = {'BaseModel': BaseModel, 'User': User, 'City': City,
+    		'Place': Place, 'Amenity': Amenity, 'Review': Review,
+    		'State': State}
 
     def default(self, line):
         """catch commands if nothing else matches then"""
