@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittest module for the Amenity Class."""
 
+
 import unittest
 from datetime import datetime
 import time
@@ -14,7 +15,6 @@ from models.base_model import BaseModel
 
 
 class TestAmenity(unittest.TestCase):
-
     """Test Cases for the Amenity class."""
 
     def setUp(self):
