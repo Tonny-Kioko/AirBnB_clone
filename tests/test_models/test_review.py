@@ -1,45 +1,18 @@
 #!/usr/bin/python3
-"""Unittest module for the review class"""
+""" testing Review """
 
 import unittest
-from datetime import datetime
-import time
+import pep8
 from models.review import Review
-import re
-import json
-from models.engine.file_storage import FileStorage
-import os
-from models import storage
-from models.base_model import BaseModel
 
 
-class TestReview(unittest.TestCase):
-    """test case for the review class"""
-    def setUp(self):
-        pass
+class Review_testing(unittest.TestCase):
+    """ check BaseModel """
 
-    def tearDown(self):
-        self.resetStorage()
-        pass
-
-    def resetStorage(self):
-        FileStorage._FileStorage__objects = {}
-        if os.path.isfile(FileStorage._FileStorage__file_path):
-            os.remove(FileStorage._FileStorage__file_path)
-
-    def test_8_instatiation(self):
-        b = Review()
-        self.assertEqual(str(type(b)), "<class 'models.review.Review'>")
-        self.assertIsInstance(b, Review)
-        self.assertTrue(issubclass(type(b), BaseModel))
-
-    def test_8_attributes(self):
-        attributes = storage.attributes()["Review"]
-        o = Review()
-        for k, v in attributes.items():
-            self.assertTrue(hasattr(o, k))
-            self.assertEqual(type(getattr(o, k, None)), v)
-
-
-if __name__ = "__main__":
-    unittest.main()
+    def testpep8(self):
+        """ testing codestyle """
+        pepstylecode = pep8.StyleGuide(quiet=True)
+        path_user = 'models/review.py'
+        result = pepstylecode.check_files([path_user])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
