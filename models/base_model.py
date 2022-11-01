@@ -43,7 +43,7 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """ Return a dictonary """
+        """ Return a dictionary """
         aux_dict = self.__dict__.copy()
         aux_dict['__class__'] = self.__class__.__name__
         aux_dict['created_at'] = self.created_at.isoformat()
